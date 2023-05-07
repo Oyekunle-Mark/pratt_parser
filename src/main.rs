@@ -7,6 +7,7 @@ use std::{
 use crate::tokens::tokenize::build_tokens;
 
 pub mod expressions;
+pub mod parser;
 pub mod tokens;
 
 const USAGE_MESSAGE: &str =
