@@ -4,6 +4,8 @@ use std::{
     process,
 };
 
+use crate::tokens::tokenize::build_tokens;
+
 pub mod tokens;
 
 const USAGE_MESSAGE: &str =
@@ -18,7 +20,9 @@ fn main() {
         process::exit(1);
     });
 
-    println!("Expression: {}", expr);
+    let tokens = build_tokens(expr);
+
+    println!("Tokens: {:#?}", tokens);
 }
 
 fn validate_and_extract_expression(args: &mut Args) -> Result<String, Box<dyn Error>> {

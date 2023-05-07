@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use super::tokens::{ITokenType, Token, Tokens};
 
-fn build_tokens(expression: String) -> Tokens {
+pub fn build_tokens(expression: String) -> Tokens {
     let mut tokens = vec![];
     let char_to_token_type_map = HashMap::from([
         ('(', ITokenType::LParen),
@@ -40,6 +40,8 @@ fn build_tokens(expression: String) -> Tokens {
             })
         } else if c.is_alphabetic() {
             name.push(*c);
+        } else if c.is_whitespace() {
+            continue;
         } else {
             panic!("Invalid token: {}", c);
         }

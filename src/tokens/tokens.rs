@@ -1,4 +1,4 @@
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug)]
 pub enum ITokenType {
     LParen,
     RParen,
@@ -38,6 +38,7 @@ impl ITokenType {
     }
 }
 
+#[derive(Debug)]
 pub struct Token {
     pub token_type: ITokenType,
     pub text: String,
@@ -52,6 +53,7 @@ impl Token {
     }
 }
 
+#[derive(Debug)]
 pub struct Tokens {
     pub tokens: Vec<Token>,
     // char_to_token_type_map: HashMap<char, ITokenType>,
