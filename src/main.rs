@@ -4,6 +4,8 @@ use std::{
     process,
 };
 
+pub mod tokens;
+
 const USAGE_MESSAGE: &str =
     "Usage: <cargo run>|<./executable> parse \"<expression to be evaluated>\"";
 const ERROR_MESSAGE: &str = "Invalid command line arguments provided!";
