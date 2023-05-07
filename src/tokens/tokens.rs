@@ -1,3 +1,6 @@
+use std::collections::HashMap;
+
+#[derive(Clone, Copy)]
 enum ITokenType {
     LParen,
     RParen,
@@ -16,6 +19,42 @@ enum ITokenType {
     EOF,
 }
 
+impl ITokenType {
+    pub fn get_char_equivalent(&self) -> Option<char> {
+        match self {
+            ITokenType::LParen => Some('('),
+            ITokenType::RParen => Some(')'),
+            ITokenType::Comma => Some(','),
+            ITokenType::Assign => Some('='),
+            ITokenType::Plus => Some('+'),
+            ITokenType::Minus => Some('-'),
+            ITokenType::Asterisk => Some('*'),
+            ITokenType::Slash => Some('/'),
+            ITokenType::Caret => Some('^'),
+            ITokenType::Tilde => Some('~'),
+            ITokenType::Bang => Some('!'),
+            ITokenType::Question => Some('?'),
+            ITokenType::Colon => Some(':'),
+            ITokenType::Name | ITokenType::EOF => None,
+        }
+    }
+}
+
 struct Token {
     token_type: ITokenType,
+    text: String,
+}
+
+impl Token {
+    pub fn get_type(&self) -> ITokenType {
+        self.token_type
+    }
+    pub fn get_text(&self) -> String {
+        self.text.clone()
+    }
+}
+
+struct Tokens {
+    tokens: Vec<Token>,
+    char_to_token_type_map: HashMap<char, ITokenType>,
 }
