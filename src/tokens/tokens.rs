@@ -1,7 +1,5 @@
-use std::collections::HashMap;
-
 #[derive(Clone, Copy)]
-enum ITokenType {
+pub enum ITokenType {
     LParen,
     RParen,
     Comma,
@@ -40,9 +38,9 @@ impl ITokenType {
     }
 }
 
-struct Token {
-    token_type: ITokenType,
-    text: String,
+pub struct Token {
+    pub token_type: ITokenType,
+    pub text: String,
 }
 
 impl Token {
@@ -54,7 +52,7 @@ impl Token {
     }
 }
 
-struct Tokens {
-    tokens: Vec<Token>,
-    char_to_token_type_map: HashMap<char, ITokenType>,
+pub struct Tokens {
+    pub tokens: Vec<Token>,
+    // char_to_token_type_map: HashMap<char, ITokenType>,
 }
