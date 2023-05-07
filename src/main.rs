@@ -20,9 +20,11 @@ fn main() {
         process::exit(1);
     });
 
-    let tokens = build_tokens(expr);
+    let mut tokens = build_tokens(expr);
 
-    println!("Tokens: {:#?}", tokens);
+    while let Some(token) = tokens.next() {
+        println!("{:#?}", token);
+    }
 }
 
 fn validate_and_extract_expression(args: &mut Args) -> Result<String, Box<dyn Error>> {

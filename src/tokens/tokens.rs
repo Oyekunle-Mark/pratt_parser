@@ -34,5 +34,19 @@ impl Token {
 
 #[derive(Debug)]
 pub struct Tokens {
+    pub index: usize,
     pub tokens: Vec<Token>,
+}
+
+impl Tokens {
+    pub fn next(&mut self) -> Option<&Token> {
+        let ret = self.tokens.get(self.index);
+        self.index += 1;
+
+        ret
+    }
+
+    pub fn peek_ahead(&mut self) -> Option<&Token> {
+        self.tokens.get(self.index + 1)
+    }
 }

@@ -55,5 +55,10 @@ pub fn build_tokens(expression: String) -> Tokens {
         name.clear();
     }
 
-    Tokens { tokens }
+    tokens.push(Token {
+        token_type: ITokenType::EOF,
+        text: String::from(""),
+    });
+
+    Tokens { tokens, index: 0 }
 }
