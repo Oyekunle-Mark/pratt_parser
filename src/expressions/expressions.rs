@@ -56,3 +56,43 @@ impl Expression for CallExpr {
         format!("{}({})", self.function.print(), args)
     }
 }
+
+impl Expression for ConditionalExpr {
+    fn print(&self) -> String {
+        format!(
+            "({} ? {} : {})",
+            self.condition.print(),
+            self.then_arm.print(),
+            self.else_arm.print()
+        )
+    }
+}
+
+impl Expression for NameExpr {
+    fn print(&self) -> String {
+        format!("{}", self.name)
+    }
+}
+
+impl Expression for OperatorExpr {
+    fn print(&self) -> String {
+        format!(
+            "({} {} {})",
+            self.left.print(),
+            self.operator,
+            self.right.print()
+        )
+    }
+}
+
+impl Expression for PostfixExpr {
+    fn print(&self) -> String {
+        format!("({}{})", self.left.print(), self.operator)
+    }
+}
+
+impl Expression for PrefixExpr {
+    fn print(&self) -> String {
+        format!("({}{})", self.operator, self.right.print())
+    }
+}
